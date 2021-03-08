@@ -13,7 +13,7 @@ export const fade = [
     state("out", style({ opacity: "0.9" })),
     transition("* <=> *", [
       animate(
-        "150ms ease-in-out",
+        "550ms ease-in-out",
         keyframes([style({ opacity: "0.9" }), style({ opacity: "1" })])
       )
     ])

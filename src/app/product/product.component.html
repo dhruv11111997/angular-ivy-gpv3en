@@ -1,7 +1,7 @@
 <p>
   Welcome Demo
 </p>
-<div (dragleave)="onDragLeave($event)">
+<!-- <div (dragleave)="onDragLeave($event)">
   <img
     [@fade]="state"
     (@fade.done)="onDone($event)"
@@ -13,6 +13,10 @@
     (dragend)="onDragEnd($event)"
     [src]="imageSource" width="500"
     />
-</div>
+</div> -->
 
-<button (click)="change()">Next</button>
+<div>
+  <img
+    [src]="imageSource" width="500"
+    />
+</div>

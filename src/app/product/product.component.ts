@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { delay } from "rxjs/operators";
 import { fade } from "./animations";
 
 @Component({
@@ -66,114 +67,61 @@ export class ProductComponent implements OnInit {
 
   ngOnInit() {
     this.imageSource = this.images[0].img;
-    // this.initiate();
-  }
-change(){
-this.imageSource = this.images[0].img;
-console.log('----------imageSource---------------',this.imageSource);
-this.counter == this.counter + 1;
-if(this.images.length === this.counter){
-  this.counter = 0;
-}
-
-}
-
-
-  drag = (data, event: any) => {
-    console.log(data);
-    console.log("event", event);
-    if (data === "start") {
-    } else {
-    }
-  };
-
-  over(event: any) {
-    this.enableAnimation = false;
-    event.preventDefault();
+    this.initialization();
   }
 
-  out(event: any) {
-    this.enableAnimation = true;
-    this.initiate();
-  }
-  initiate() {
-    if (this.counter > 13) {
-      this.counter = 0;
-    }
-    this.enableAnimation = true;
-    if (this.enableAnimation) {
-      this.toggggleSState();
-    }
-  }
-
-  toggleImges() {
-    this.imageSource = this.images[this.counter]?.img;
-
-    this.initiate();
-  }
-
-  onDone($event) {
-    if (this.enableAnimation) {
-      if (this.counter > 0) {
-        this.toggleImges();
-      } else {
-        this.toggggleSState();
-      }
-    }
-  }
-
-  toggggleSState() {
-    if (this.counter % 2 == 0) {
-      this.state = "in";
-      this.counter++;
-    } else {
-      this.state = "out";
-      this.counter++;
-    }
-  }
-
-  onDragStart(event: DragEvent) {
-    console.log(`starting`, event);
-    // Hide dragging element
-    // event.target.style.opacity = 0;
-  }
-
-  onDrag(event: DragEvent) {
-    console.log("dragging", event);
-  }
-  val = 0;
-  onDragOver(event: DragEvent) {
-    console.log("----dhruvdddddddddd");
-    if (this.counter > 17) {
-      this.counter = 0;
-    }
-    console.log("drag over", event);
-    if (event.x % 9 == 0) {
-      if (this.val < event.x) {
-        this.counter = this.counter + 1;
+  public initialization() {
+    this.counter = 0;
+    while (this.counter < 12) {
+    setTimeout(()=>{
         this.imageSource = this.images[this.counter]?.img;
-        this.val = event.x;
-      } else {
-        this.counter = this.counter - 1;
-        this.imageSource = this.images[this.counter]?.img;
-        this.val = event.x;
-      }
+      console.log("-0------------", this.imageSource);
+      this.counter++;
+    }, 3000);
     }
   }
+  // onDragStart(event: DragEvent) {
+  //   console.log(`starting`, event);
+  //   // Hide dragging element
+  //   // event.target.style.opacity = 0;
+  // }
 
-  onDragEnd(event: DragEvent) {
-    console.log("drag end", event);
-    // event.target.style.opacity = 1;
-  }
-  onDragLeave(event: DragEvent) {
-    console.log("drag leave", event);
-  }
+  // onDrag(event: DragEvent) {
+  //   console.log("dragging", event);
+  // }
+  // val = 0;
+  // onDragOver(event: DragEvent) {
+  //   console.log("----dhruvdddddddddd");
+  //   if (this.counter > 17) {
+  //     this.counter = 0;
+  //   }
+  //   console.log("drag over", event);
+  //   if (event.x % 9 == 0) {
+  //     if (this.val < event.x) {
+  //       this.counter = this.counter + 1;
+  //       this.imageSource = this.images[this.counter]?.img;
+  //       this.val = event.x;
+  //     } else {
+  //       this.counter = this.counter - 1;
+  //       this.imageSource = this.images[this.counter]?.img;
+  //       this.val = event.x;
+  //     }
+  //   }
+  // }
 
-  onDrop(event: DragEvent) {
-    console.log("dropped", event);
-  }
+  // onDragEnd(event: DragEvent) {
+  //   console.log("drag end", event);
+  //   // event.target.style.opacity = 1;
+  // }
+  // onDragLeave(event: DragEvent) {
+  //   console.log("drag leave", event);
+  // }
 
-  onDragEnter(event: DragEvent) {
-    console.log("drag enter", event);
-  }
+  // onDrop(event: DragEvent) {
+  //   console.log("dropped", event);
+  // }
+
+  // onDragEnter(event: DragEvent) {
+  //   console.log("drag enter", event);
+  // }
 }
