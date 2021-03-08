@@ -17,6 +17,8 @@
 
 <div>
   <img
+  [@fade]="state"
+    (@fade.done)="onDone($event)"
     [src]="imageSource" width="500"
     />
 </div>
