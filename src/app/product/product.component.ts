@@ -75,14 +75,19 @@ export class ProductComponent implements OnInit {
     this.counter = 0;
     while (this.counter < 12) {
         this.imageSource = this.images[this.counter]?.img;
-      console.log("-0------------", this.imageSource);
+      // console.log("-0------------", this.imageSource);
       
       this.counter++;
-      // if(this.counter == 12){
-      //   this.counter =0;
-      // }
+      if(this.counter == 12){
+        this.counter =0;
+      }
        await timer(1000); // then the created Promise can be awaited
     }
+  }
+
+  onDone($event){
+    console.log('------event--------',$event);
+    this.state = $event.toState;
   }
   // onDragStart(event: DragEvent) {
   //   console.log(`starting`, event);
